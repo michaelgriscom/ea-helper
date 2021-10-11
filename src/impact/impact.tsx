@@ -4,6 +4,7 @@ import InputLabel from '@mui/material/InputLabel';
 import NativeSelect from '@mui/material/NativeSelect';
 import OutlinedInput from '@mui/material/OutlinedInput';
 import React from 'react';
+import LineChart from "./lineChart";
 
 function Impact() {
   return (
@@ -32,6 +33,8 @@ function Impact() {
           <option value={1}>Give Directly</option>
         </NativeSelect>
       </FormControl>
+
+      <LineChart />
     </div>
   );
 }

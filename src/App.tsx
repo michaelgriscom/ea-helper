@@ -7,6 +7,7 @@ import {IconButton, useMediaQuery} from '@mui/material';
 import SettingsIcon from '@mui/icons-material/Settings';
 import Navigation from './Navigation';
 import {SelectedTheme} from './settings/ThemeSelector';
+import CssBaseline from "@mui/material/CssBaseline";
 
 const darkTheme = createTheme({
   palette: {
@@ -20,21 +21,6 @@ const lightTheme = createTheme({
   },
 });
 
-// const useThemeDetector = () => {
-//   const getCurrentTheme = () => window.matchMedia("(prefers-color-scheme: dark)").matches;
-//   const [isDarkTheme, setIsDarkTheme] = React.useState(getCurrentTheme());
-//   const mqListener = (e => {
-//     setIsDarkTheme(e.matches);
-//   });
-
-//   React.useEffect(() => {
-//     const darkThemeMq = window.matchMedia("(prefers-color-scheme: dark)");
-//     darkThemeMq.addListener(mqListener);
-//     return () => darkThemeMq.removeListener(mqListener);
-//   }, []);
-//   return isDarkTheme;
-// }
-
 function getTheme(prefersDarkMode: boolean, selectedTheme: SelectedTheme) {
   if (selectedTheme === 'system' && prefersDarkMode || selectedTheme === 'dark') {
     return darkTheme;
@@ -44,33 +30,19 @@ function getTheme(prefersDarkMode: boolean, selectedTheme: SelectedTheme) {
 }
 
 function App() {
-
   const prefersDarkMode = useMediaQuery("(prefers-color-scheme: dark)");
-  const [darkMode, setDarkMode] = React.useState(prefersDarkMode);
-
-  // const theme = React.useMemo(() =>
-  //   createMuiTheme({
-  //     palette: {
-  //       type: darkMode ? "dark" : "light"
-  //     }
-  //   })
-  // );
-
-  const handleDarkModeToggle = () => {
-    setDarkMode(!darkMode);
-  };
+  const [selectedTheme, setSelectedTheme] = React.useState<SelectedTheme>('system');
+  const [theme, setTheme] = React.useState(getTheme(prefersDarkMode, selectedTheme as SelectedTheme));
 
   useEffect(() => {
-    setDarkMode(prefersDarkMode);
-  }, [prefersDarkMode]);
-
-  // const isDarkTheme = useThemeDetector();
-  const [theme, setTheme] = React.useState(getTheme(prefersDarkMode, 'system'));
+    setTheme(getTheme(prefersDarkMode, selectedTheme));
+  }, [prefersDarkMode, selectedTheme]);
 
   return (
     <ThemeProvider theme={theme}>
+      <CssBaseline />
       <Navigation />
-      <Settings onChangeTheme={(selectedTheme) => setTheme(getTheme(prefersDarkMode, selectedTheme))}/>
+      <Settings onChangeTheme={(selectedTheme) => setSelectedTheme(selectedTheme)}/>
     </ThemeProvider>
 
   );

@@ -20,6 +20,7 @@ interface SettingsProps {
 
 export default function Settings(props: SettingsProps) {
   const [state, setState] = React.useState(false);
+  const {onChangeTheme} = props;
 
   const toggleDrawer = (open: boolean) => (event: React.MouseEvent<HTMLButtonElement>) => {
     setState(open);
@@ -41,7 +42,7 @@ export default function Settings(props: SettingsProps) {
         >
           <List>
             Theme
-            <ThemeSelector onChangeTheme={props.onChangeTheme}/>
+            <ThemeSelector onChangeTheme={onChangeTheme}/>
           </List>
         </Box>
       </Drawer>

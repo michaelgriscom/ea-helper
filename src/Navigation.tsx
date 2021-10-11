@@ -1,8 +1,6 @@
 import * as React from 'react';
-import Tabs from '@mui/material/Tabs';
-import Tab from '@mui/material/Tab';
 import Typography from '@mui/material/Typography';
-import Box from '@mui/material/Box';
+import {Box, Tab, Tabs} from '@mui/material';
 import Impact from './impact/impact';
 
 interface TabPanelProps {
@@ -12,7 +10,7 @@ interface TabPanelProps {
 };
 
 function TabPanel(props: TabPanelProps) {
-  const {children, value, index, ...other} = props;
+  const {children, value, index} = props;
 
   return (
     <div
@@ -20,7 +18,6 @@ function TabPanel(props: TabPanelProps) {
       hidden={value !== index}
       id={`navigationpanel-${index}`}
       aria-labelledby={`navigation-${index}`}
-      {...other}
     >
       {value === index && (
         <Box sx={{p: 3}}>

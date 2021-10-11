@@ -12,6 +12,7 @@ interface ThemeSelectorProps {
 
 export default function ThemeSelector(props: ThemeSelectorProps) {
   const [theme, setTheme] = React.useState('system');
+  const {onChangeTheme} = props;
 
   const handleTheme = (event: any, newTheme: SelectedTheme) => {
     if (newTheme === null) {
@@ -19,7 +20,7 @@ export default function ThemeSelector(props: ThemeSelectorProps) {
     }
 
     setTheme(newTheme);
-    props.onChangeTheme(newTheme)
+    onChangeTheme(newTheme)
   };
 
   return (

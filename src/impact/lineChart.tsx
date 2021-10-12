@@ -1,3 +1,4 @@
+import {useTheme, withStyles, withTheme} from "@mui/material";
 import {
   LineChart,
   Line,
@@ -14,7 +15,10 @@ const data = [
   { name: "2021", amount: 600 },
 ];
 
-function lineChart() {
+function ThemedLineChart() {
+  const theme = useTheme();
+
+  // const {theme} = props;
   return (
     <LineChart
       width={600}
@@ -22,13 +26,27 @@ function lineChart() {
       data={data}
       margin={{ top: 5, right: 20, bottom: 5, left: 0 }}
     >
-      <Line type="monotone" dataKey="amount" stroke="#8884d8" />
-      <CartesianGrid stroke="#ccc" strokeDasharray="5 5" />
+      <Line
+        dataKey="amount"
+        // type="monotone" dataKey="amount" stroke="#8884d8"
+      />
+      <CartesianGrid
+      // stroke="#ccc" strokeDasharray="5 5"
+      />
       <XAxis dataKey="name" />
       <YAxis />
-      <Tooltip />
+      {/* <Tooltip
+      wrapperStyle={{
+        // backgroundColor: "#f5f5f5",
+        backgroundColor: theme.palette.background.paper,
+        // color: "#f5f5f5",
+        color: theme.palette.text.secondary,
+        border: "none",
+        boxShadow: theme.shadows[1],
+      }}
+      /> */}
     </LineChart>
   );
 }
 
-export default lineChart;
+export default ThemedLineChart;

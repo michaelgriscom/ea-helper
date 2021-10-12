@@ -1,8 +1,4 @@
-import FormControl from "@mui/material/FormControl";
-import InputAdornment from "@mui/material/InputAdornment";
-import InputLabel from "@mui/material/InputLabel";
-import NativeSelect from "@mui/material/NativeSelect";
-import OutlinedInput from "@mui/material/OutlinedInput";
+import {FormControl, InputAdornment, InputLabel, OutlinedInput, Select} from "@mui/material";
 import React from "react";
 import LineChart from "./lineChart";
 
@@ -24,7 +20,7 @@ function Impact() {
         <InputLabel variant="standard" htmlFor="uncontrolled-native">
           Charity
         </InputLabel>
-        <NativeSelect
+        <Select
           defaultValue={1}
           inputProps={{
             name: "charity",
@@ -32,7 +28,7 @@ function Impact() {
           }}
         >
           <option value={1}>Give Directly</option>
-        </NativeSelect>
+        </Select>
       </FormControl>
 
       <LineChart />

@@ -5,7 +5,7 @@ import { createTheme, ThemeProvider } from "@mui/material/styles";
 import Settings from "./settings/Settings";
 import { IconButton, useMediaQuery } from "@mui/material";
 import SettingsIcon from "@mui/icons-material/Settings";
-import Navigation from "./Navigation";
+import NavBar from "./Navigation";
 import { SelectedTheme } from "./settings/ThemeSelector";
 import CssBaseline from "@mui/material/CssBaseline";
 
@@ -47,10 +47,12 @@ function App() {
   return (
     <ThemeProvider theme={theme}>
       <CssBaseline />
-      <Navigation />
-      <Settings
+      <NavBar
         onChangeTheme={(selectedTheme) => setSelectedTheme(selectedTheme)}
       />
+      {/* <Settings
+        onChangeTheme={(selectedTheme) => setSelectedTheme(selectedTheme)}
+      /> */}
     </ThemeProvider>
   );
 }

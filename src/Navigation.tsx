@@ -1,7 +1,10 @@
 import * as React from "react";
 import Typography from "@mui/material/Typography";
-import { Box, Tab, Tabs } from "@mui/material";
+import { AppBar, Box, Grid, Link, Tab, Tabs, Toolbar } from "@mui/material";
 import Impact from "./impact/impact";
+import ThemeSelector, {SelectedTheme} from "./settings/ThemeSelector";
+
+const logo = require("./logo.svg");
 
 interface TabPanelProps {
   children: React.ReactNode;
@@ -34,8 +37,12 @@ function a11yProps(index: number) {
     "aria-controls": `navigationpanel-${index}`,
   };
 }
+interface NavBarProps {
+  onChangeTheme: (newTheme: SelectedTheme) => void;
+}
 
-export default function Navigation() {
+export default function NavBar(props: NavBarProps) {
+  const { onChangeTheme } = props;
   const [value, setValue] = React.useState(0);
 
   const handleChange = (event: any, newValue: number) => {
@@ -43,23 +50,32 @@ export default function Navigation() {
   };
 
   return (
-    <Box sx={{ width: "100%" }}>
-      <Box sx={{ borderBottom: 1, borderColor: "divider" }}>
-        <Tabs
-          value={value}
-          onChange={handleChange}
-          aria-label="basic tabs example"
-        >
-          <Tab label="My Impact" {...a11yProps(0)} />
-          <Tab label="Charity Matcher" {...a11yProps(1)} />
-        </Tabs>
-      </Box>
+    <Grid>
+      <AppBar color="default">
+        <Toolbar>
+          <Grid container alignItems="baseline">
+            <Grid item xs={12}>
+              <Typography variant="h6" color="inherit" noWrap>
+                <img width={20} src={logo} alt="" />
+                <span>Giving Toolbox</span>
+              </Typography>
+            </Grid>
+            <Grid xs={4} item>
+              <Tabs value={value} onChange={handleChange} aria-label="tabs">
+                <Tab label="My Impact" {...a11yProps(0)} />
+                <Tab label="Charity Matcher" {...a11yProps(1)} />
+              </Tabs>
+            </Grid>
+          </Grid>
+          <ThemeSelector onChangeTheme={onChangeTheme} />
+        </Toolbar>
+      </AppBar>
       <TabPanel value={value} index={0}>
         <Impact />
       </TabPanel>
       <TabPanel value={value} index={1}>
         Charity Matcher
       </TabPanel>
-    </Box>
+    </Grid>
   );
 }

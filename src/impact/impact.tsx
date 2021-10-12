@@ -1,6 +1,7 @@
 import {FormControl, InputAdornment, InputLabel, OutlinedInput, Select} from "@mui/material";
-import React from "react";
-import LineChart from "./lineChart";
+import ThemedLineChart from "./lineChart";
+import LineChart from "./nivoLineChart";
+// import LineChart from "./lineChart";
 
 function Impact() {
   return (
@@ -32,6 +33,7 @@ function Impact() {
       </FormControl>
 
       <LineChart />
+      <ThemedLineChart />
     </div>
   );
 }

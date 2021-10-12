@@ -1,15 +1,12 @@
 import React, { useEffect } from "react";
-import logo from "./logo.svg";
 import "./App.css";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
-import Settings from "./settings/Settings";
-import { IconButton, useMediaQuery } from "@mui/material";
-import SettingsIcon from "@mui/icons-material/Settings";
+import { useMediaQuery } from "@mui/material";
 import NavBar from "./Navigation";
 import { SelectedTheme } from "./settings/ThemeSelector";
 import CssBaseline from "@mui/material/CssBaseline";
 import Impact from "./impact/impact";
-import {BrowserRouter as Router, Switch, Route, Link} from "react-router-dom";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import Donations from "./donations/Donations";
 
 const darkTheme = createTheme({

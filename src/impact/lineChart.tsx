@@ -1,4 +1,4 @@
-import {useTheme, withStyles, withTheme} from "@mui/material";
+import { useTheme } from "@mui/material";
 import {
   LineChart,
   Line,
@@ -35,16 +35,16 @@ function ThemedLineChart() {
       />
       <XAxis dataKey="name" />
       <YAxis />
-      {/* <Tooltip
-      wrapperStyle={{
-        // backgroundColor: "#f5f5f5",
-        backgroundColor: theme.palette.background.paper,
-        // color: "#f5f5f5",
-        color: theme.palette.text.secondary,
-        border: "none",
-        boxShadow: theme.shadows[1],
-      }}
-      /> */}
+      <Tooltip
+        wrapperStyle={{
+          // backgroundColor: "#f5f5f5",
+          backgroundColor: theme.palette.background.paper,
+          // color: "#f5f5f5",
+          color: theme.palette.text.secondary,
+          border: "none",
+          boxShadow: theme.shadows[1],
+        }}
+      />
     </LineChart>
   );
 }

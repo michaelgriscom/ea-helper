@@ -8,6 +8,9 @@ import SettingsIcon from "@mui/icons-material/Settings";
 import NavBar from "./Navigation";
 import { SelectedTheme } from "./settings/ThemeSelector";
 import CssBaseline from "@mui/material/CssBaseline";
+import Impact from "./impact/impact";
+import {BrowserRouter as Router, Switch, Route, Link} from "react-router-dom";
+import Donations from "./donations/Donations";
 
 const darkTheme = createTheme({
   palette: {
@@ -47,12 +50,18 @@ function App() {
   return (
     <ThemeProvider theme={theme}>
       <CssBaseline />
-      <NavBar
-        onChangeTheme={(selectedTheme) => setSelectedTheme(selectedTheme)}
-      />
-      {/* <Settings
-        onChangeTheme={(selectedTheme) => setSelectedTheme(selectedTheme)}
-      /> */}
+      <Router>
+        <NavBar
+          onChangeTheme={(selectedTheme: SelectedTheme) =>
+            setSelectedTheme(selectedTheme)
+          }
+        />
+        <Switch>
+          <Route path="/impact" component={Impact} />
+          <Route path="/donations" component={Donations} />
+          <Route path="/" component={Impact} />
+        </Switch>
+      </Router>
     </ThemeProvider>
   );
 }

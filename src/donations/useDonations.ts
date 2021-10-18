@@ -18,8 +18,11 @@ export const charityInfo = {
     friendlyName: 'GiveDirectly',
   },
   'amf': {
-    friendlyName: 'AMF',
-  }
+    friendlyName: 'Against Malaria Foundation',
+  },
+  'vitaminA': {
+    friendlyName: 'Vitamin A Supplementation',
+  },
 };
 
 function generateData(seed: number): Donation[] {

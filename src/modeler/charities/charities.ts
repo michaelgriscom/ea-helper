@@ -7,6 +7,94 @@ interface GiveDirectlyMetrics {
   grantInvestmentReturnAnnual: number;
 }
 
+type Unit = "percent" | "count" | "USD" | "years";
+
+interface MetricValue {
+  source: string;
+  value: number;
+}
+
+type MetricType = "";
+
+interface Metric {
+  metricType: MetricType;
+  value: MetricValue;
+  description: string;
+  unit: Unit;
+}
+
+interface Charity {
+  name: string;
+  metrics: Metric[];
+}
+
+interface ImpactMetric {
+  name: string;
+  unit: Unit;
+  description?: string;
+}
+
+const impactMetrics: ImpactMetric[] = [
+  {
+    name: "Human Lives Saved",
+    unit: "count",
+  },
+  {
+    name: "QALYs",
+    unit: "years",
+  },
+  {
+    name: "Education years",
+    unit: "years",
+  },
+  {
+    name: "Animal Lives Saved",
+    unit: "count",
+  },
+  {
+    name: "Economic Impact",
+    unit: "USD",
+  }
+]
+
+
+const GiveDirectlyCharity : Charity = {
+  name: 'Give Directly',
+  metrics: [
+  //   {
+  //     metricType:
+  //   }
+  ]
+}
+
+const livesSavedPer20000 = {
+  drc: {
+    under5: 10.323,
+    fivePlus: 2.451,
+  },
+  guinea: {
+    under5: 10.918,
+    fivePlus: 3.369,
+  },
+  togo: {
+    under5: 4.634,
+    fivePlus: 7.010,
+  },
+  uganda: {
+    under5: 9.144,
+    fivePlus: 2.188,
+  },
+  nigeria: {
+    under5: 10.462,
+    fivePlus: 8.355,
+  }
+
+}
+
+const amf2021 = {
+
+}
+
 export const giveDirectly2021: GiveDirectlyMetrics = {
   // Source
   // https://docs.google.com/spreadsheets/d/1B1fODKVbnGP4fejsZCVNvBm5zvI1jC7DhkaJpFk6zfo/edit#gid=1680005064

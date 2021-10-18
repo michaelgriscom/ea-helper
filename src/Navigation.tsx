@@ -21,7 +21,7 @@ function NavBar(props: NavBarProps) {
 
   return (
     <Grid>
-      <AppBar color="default">
+      <AppBar color="default" position="sticky">
         <Toolbar>
           <Grid container alignItems="baseline">
             <Grid item xs={12}>

@@ -1,13 +1,13 @@
 import React, { useEffect } from "react";
 import "./App.css";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
-import { useMediaQuery } from "@mui/material";
+import { Box, useMediaQuery } from "@mui/material";
 import NavBar from "./Navigation";
 import { SelectedTheme } from "./settings/ThemeSelector";
 import CssBaseline from "@mui/material/CssBaseline";
 import Impact from "./impact/impact";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
-import Donations from "./donations/Donations";
+import Donations from "./donations/DonationTable";
 
 const darkTheme = createTheme({
   palette: {
@@ -48,16 +48,16 @@ function App() {
     <ThemeProvider theme={theme}>
       <CssBaseline />
       <Router>
-        <NavBar
-          onChangeTheme={(selectedTheme: SelectedTheme) =>
-            setSelectedTheme(selectedTheme)
-          }
-        />
-        <Switch>
-          <Route path="/impact" component={Impact} />
-          <Route path="/donations" component={Donations} />
-          <Route path="/" component={Impact} />
-        </Switch>
+          <NavBar
+            onChangeTheme={(selectedTheme: SelectedTheme) =>
+              setSelectedTheme(selectedTheme)
+            }
+          />
+          <Switch>
+            <Route path="/impact" component={Impact} />
+            <Route path="/donations" component={Donations} />
+            <Route path="/" component={Impact} />
+          </Switch>
       </Router>
     </ThemeProvider>
   );

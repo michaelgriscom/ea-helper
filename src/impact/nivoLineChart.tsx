@@ -1,7 +1,7 @@
 // install (please make sure versions match peerDependencies)
 // yarn add @nivo/core @nivo/line
 import {useTheme} from "@mui/material";
-import { Line } from "@nivo/line";
+import { ResponsiveLine } from "@nivo/line";
 
 export interface Datum {
   x: string;
@@ -72,7 +72,7 @@ function LineChart(props: LineChartProps) {
   };
 
   return (
-    <Line
+    <ResponsiveLine
       data={props.series}
       // enableArea={true}
       // yScale={{
@@ -81,8 +81,6 @@ function LineChart(props: LineChartProps) {
       // }}
 
       theme={chartTheme}
-      height={300}
-      width={600}
       xScale={{
         type: "time",
         format: "%Y",

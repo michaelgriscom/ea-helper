@@ -1,7 +1,7 @@
 // install (please make sure versions match peerDependencies)
 // yarn add @nivo/core @nivo/line
 import { useTheme } from "@mui/material";
-import { Pie } from "@nivo/pie";
+import { ResponsivePie } from "@nivo/pie";
 
 
 export interface Datum {
@@ -66,11 +66,9 @@ function PieChart(props: PieChartProps) {
   };
 
   return (
-    <Pie
+    <ResponsivePie
       data={props.data}
       theme={chartTheme}
-      height={300}
-      width={600}
     />
   );
 }

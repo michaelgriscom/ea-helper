@@ -1,6 +1,7 @@
 import {
   FormControl,
   InputAdornment,
+  Grid,
   CardContent, InputLabel,
   Card,
   OutlinedInput,
@@ -89,44 +90,52 @@ function Impact() {
 
 
   return (
-    <div>
-      <Card>
-        <CardContent>
-          <Slider
-            value={timeRange}
-            min={minYear}
-            max={maxYear}
-            step={1}
-            marks={marks}
-            onChange={handleChange}
-            valueLabelDisplay="auto"
-          />
-        </CardContent>
-      </Card>
-      <Card>
-        <CardContent>
-          <LineChart
-            series={cumulativeDonationData}
-            minX={new Date(timeRange[0], 0, 0)}
-            maxX={new Date(timeRange[1], 0, 0)}
-          />
-        </CardContent>
-      </Card>
-      <Card>
-        <CardContent>
-          <LineChart
-            series={[giveDirectlyImpact]}
-            minX={new Date(timeRange[0], 0, 0)}
-            maxX={new Date(timeRange[1], 0, 0)}
-          />
-        </CardContent>
-      </Card>
-      <Card>
-        <CardContent>
-          <PieChart data={sumByCharity} />
-        </CardContent>
-      </Card>
-    </div>
+    <Grid container spacing={2}>
+      <Grid item xs={4} md={4} style={{ height: "300px" }}>
+        <Card>
+          <CardContent style={{ height: "300px" }}>
+            <Slider
+              value={timeRange}
+              min={minYear}
+              max={maxYear}
+              step={1}
+              marks={marks}
+              onChange={handleChange}
+              valueLabelDisplay="auto"
+            />
+          </CardContent>
+        </Card>
+      </Grid>
+      <Grid item xs={4} md={4} style={{ height: "300px" }}>
+        <Card>
+          <CardContent style={{ height: "300px" }}>
+            <LineChart
+              series={cumulativeDonationData}
+              minX={new Date(timeRange[0], 0, 0)}
+              maxX={new Date(timeRange[1], 0, 0)}
+            />
+          </CardContent>
+        </Card>
+      </Grid>
+      <Grid item xs={4} md={4} style={{ height: "300px" }}>
+        <Card>
+          <CardContent style={{ height: "300px" }}>
+            <LineChart
+              series={[giveDirectlyImpact]}
+              minX={new Date(timeRange[0], 0, 0)}
+              maxX={new Date(timeRange[1], 0, 0)}
+            />
+          </CardContent>
+        </Card>
+      </Grid>
+      <Grid item xs={4} md={4}>
+        <Card>
+          <CardContent style={{ height: "300px" }}>
+            <PieChart data={sumByCharity} />
+          </CardContent>
+        </Card>
+      </Grid>
+    </Grid>
   );
 }
 

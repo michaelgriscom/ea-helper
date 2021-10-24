@@ -35,7 +35,7 @@ function getTheme(prefersDarkMode: boolean, selectedTheme: SelectedTheme) {
 function App() {
   const prefersDarkMode = useMediaQuery("(prefers-color-scheme: dark)");
   const [selectedTheme, setSelectedTheme] =
-    React.useState<SelectedTheme>("system");
+    React.useState<SelectedTheme>("light");
   const [theme, setTheme] = React.useState(
     getTheme(prefersDarkMode, selectedTheme as SelectedTheme)
   );

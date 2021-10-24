@@ -1,4 +1,4 @@
-interface GiveDirectlyMetrics {
+export interface GiveDirectlyMetrics {
   name: string;
   grantSizeUsd: number;
   householdSize: number;
@@ -88,14 +88,22 @@ const livesSavedPer20000 = {
     under5: 10.462,
     fivePlus: 8.355,
   }
-
 }
 
-const amf2021 = {
-
+export interface AmfMetrics {
+  costPerLifeSaved: Metric;
 }
 
-export const giveDirectly2021: GiveDirectlyMetrics = {
+export const amf2021 = {
+  costPerLifeSaved: {
+    value: 3000
+  },
+  economicAnnualRoR: {
+    value: 0.08
+  }
+};
+
+export const giveDirectly2021 = {
   // Source
   // https://docs.google.com/spreadsheets/d/1B1fODKVbnGP4fejsZCVNvBm5zvI1jC7DhkaJpFk6zfo/edit#gid=1680005064
   name: "Give Directly",
@@ -104,6 +112,7 @@ export const giveDirectly2021: GiveDirectlyMetrics = {
   efficiencyRate: 0.83,
   grantAmountInvested: 0.39,
   grantInvestmentReturnAnnual: 0.1,
+  investmentReturnYears: 10,
 };
 
 function giveDirectlyInvestmentReturn(

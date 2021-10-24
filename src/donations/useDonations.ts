@@ -1,8 +1,9 @@
 import chance from 'chance';
 import _ from 'lodash';
 import {useState} from 'react';
+import {DateAmount} from '../impact/impactCalculations';
 
-export interface Donation {
+export interface Donation extends DateAmount {
   id: string;
   charity: keyof typeof charityInfo;
   amount: number;

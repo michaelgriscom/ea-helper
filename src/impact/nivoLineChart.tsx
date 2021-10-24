@@ -14,7 +14,9 @@ export interface Series {
 }
 
 interface LineChartProps {
-  series: Series[]
+  series: Series[];
+  minX: Date|'auto',
+  maxX: Date|'auto',
 }
 
 // make sure parent container have a defined height when using
@@ -72,12 +74,20 @@ function LineChart(props: LineChartProps) {
   return (
     <Line
       data={props.series}
+      // enableArea={true}
+      // yScale={{
+      //   type: "linear",
+      //   stacked: true,
+      // }}
+
       theme={chartTheme}
       height={300}
       width={600}
       xScale={{
         type: "time",
         format: "%Y",
+        min: props.minX,
+        max: props.maxX,
       }}
       xFormat="time:%Y"
       yFormat={(val) =>
@@ -139,5 +149,7 @@ function LineChart(props: LineChartProps) {
     />
   );
 }
+
+LineChart.defaultProps = {minX: 'auto', maxX: 'auto'};
 
 export default LineChart;
